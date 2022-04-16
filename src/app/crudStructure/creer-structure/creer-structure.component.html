@@ -7,7 +7,7 @@
 
 <mat-form-field  appearance="outline">
 <mat-label  for="code" >Code structure: </mat-label>
-<input formConroleName="code"  matInput type="text" placeholder="" id="code"  name="codeStructure" [(ngModel)]="structure.code"  required #code="ngModel"           
+<input  matInput type="text" placeholder="" id="code"  name="codeStructure" [(ngModel)]="structure.code"  required #code="ngModel"           
 [class.is-invalid]="code.invalid && code.touched"   >
 <small class="text-danger" [class.d-none]="code.valid || code.untouched">Code is required field</small> 
 </mat-form-field>
@@ -15,7 +15,7 @@
 
 <mat-form-field  appearance="outline">
   <mat-label for="libelle">Libellé structure: </mat-label>
-   <input formConroleName="libelle" matInput type="text" name="libelleStructure" id="libelle" placeholder="" [(ngModel)]="structure.libelle"  required pattern="^[a-zA-Z]+[a-zA-Z éèà'ç_]*$" #libelle="ngModel"           
+   <input matInput type="text" name="libelleStructure" id="libelle" placeholder="" [(ngModel)]="structure.libelle"  required pattern="^[a-zA-Z]+[a-zA-Z éèà'ç_]*$" #libelle="ngModel"           
    [class.is-invalid]="libelle.invalid && libelle.touched"   >
    <small class="text-danger" [class.d-none]="libelle.valid || libelle.untouched">Libellé structure is required field</small> 
   </mat-form-field>

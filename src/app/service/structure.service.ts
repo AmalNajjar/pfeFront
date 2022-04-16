@@ -13,7 +13,7 @@ export class StructureService {
   constructor(private _http : HttpClient) { }
   baseUrl:string="http://localhost:8083/api/test/Structures/";
 
-  public registrerCompteFromRemoteS(structure :Structure):Observable<any>{
+  public registrerCompteFromRemoteS(structure :any):Observable<any>{
     return this._http.post<any>("http://localhost:8083/api/test/Structure",structure);
   }
   

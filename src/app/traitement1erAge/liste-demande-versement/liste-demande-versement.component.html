@@ -1,13 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
     ">
     
-    <h1 >Gestion de paramétrages des structures centrales</h1>
+    <h1 >Liste des demandes à traiter</h1>
     <br>
-    
-    <a class="btn btn-success"  role="button" (click)="openDialog()">+ Créer</a>
-    
     <br>
-
     
     <div class="container">
     <div style="margin-top:10px;">
@@ -20,46 +16,41 @@
             <table mat-table [dataSource]="dataSource" matSort>
           
               <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+              <ng-container matColumnDef="date_dde">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date de la demande</th>
+                <td mat-cell *matCellDef="let row"> {{row.date_dde}} </td>
               </ng-container>
           
               <!-- Progress Column -->
-              <ng-container matColumnDef="code">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code structure </th>
-                <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+              <ng-container matColumnDef="objet">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Objet</th>
+                <td mat-cell *matCellDef="let row"> {{row.objet}} </td>
               </ng-container>
           
               <!-- Name Column -->
-              <ng-container matColumnDef="libelle">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Libélle structure</th>
-                <td mat-cell *matCellDef="let row"> {{row.libelle}} </td>
+              <ng-container matColumnDef="nbrCarton">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre de cartons</th>
+                <td mat-cell *matCellDef="let row"> {{row.nbrCarton}} </td>
               </ng-container>
           
               <!-- Fruit Column -->
-              <ng-container matColumnDef="lieu_archivage1ereAge">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu d'archivage 1ere âge</th>
-                <td mat-cell *matCellDef="let row"> {{row.lieu_archivage1ereAge.lieu}} </td>
+              <ng-container matColumnDef="etat">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Etat</th>
+                <td mat-cell *matCellDef="let row"> {{row.etat}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="lieu_archivage2emeAge">
+            <!--  <ng-container matColumnDef="lieu_archivage2emeAge">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu d'archivage 2éme âge</th>
-                <td mat-cell *matCellDef="let row"> {{row.lieu_archivage2emeAge.lieu}} </td>
-              </ng-container>
+                <td mat-cell *matCellDef="let row"> {{row.lieu_archivage2emeAge.libelle_lieu}} </td>
+              </ng-container> 
+              -->
 
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row"> 
-                    <button mat-icon-button (click)="openDialoggg(row)" color="primary" >
-                        <mat-icon>search</mat-icon>
-                    </button>  
                     <button mat-icon-button (click)="openDialogggg(row)" color="accent" >
                         <mat-icon>edit</mat-icon>
-                    </button>  
-                    <button mat-icon-button (click)="openDialogg(row)" color="warn" >
-                        <mat-icon>delete</mat-icon>
-                    </button>  
+                    </button>   
                 </td>
               </ng-container>
           
@@ -81,3 +72,4 @@
     
 
     
+

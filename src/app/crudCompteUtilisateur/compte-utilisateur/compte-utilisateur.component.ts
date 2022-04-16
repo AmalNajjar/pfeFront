@@ -18,7 +18,7 @@ export class CompteUtilisateurComponent implements OnInit {
   //em:string="";
   msg='';
   productForm !: FormGroup;
-
+  
   constructor(private _service:RegistrationService,private _router:Router,private formBuilder : FormBuilder) { }
   ngOnInit(): void {
     this.productForm=this.formBuilder.group({
@@ -47,22 +47,18 @@ export class CompteUtilisateurComponent implements OnInit {
   retourner(){
     this._router.navigate(['/gestion-parametrages']);
   }
-
+  email:any;
   exist:boolean=false;
+  
   opensweetalert(){ 
     console.log(this.compte.email);
-  //  console.log(this.em);
-    //this.compte.email=this.em;
-    this._service.getComptes().subscribe(
 
-      ( result =>{
-      for(const k of result) {
-        if (k.email===this.compte.email){
-          console.log(k.email);
-          this.exist=true;
-          break; 
-        }      
-      }    
+    /* this._service.findByEmail(email).subscribe(
+  
+      
+      )
+*/
+         
     if(!this.exist){
      this.enregCompte();
        Swal.fire(
@@ -92,9 +88,9 @@ export class CompteUtilisateurComponent implements OnInit {
               this.retourner();
             }
           })
-      }))        
+      }//))        
       ;
-  }
+  //}
   retour(){
     window.location.reload()
   }

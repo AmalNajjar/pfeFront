@@ -5,6 +5,7 @@ import { StructureService } from 'src/app/service/structure.service';
 import { Structure } from 'src/app/structure';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
+import { LieuArchive } from 'src/app/lieu-archive';
 
 @Component({
   selector: 'app-update-structure',
@@ -12,27 +13,35 @@ import { Location } from '@angular/common';
   styleUrls: ['./update-structure.component.css']
 })
 export class UpdateStructureComponent implements OnInit {
-  id :any;
-  structure:any;
+  id !:any;
+  structure:Structure= new Structure();
+  lieux!:LieuArchive[];
+  selectedId1!:number;
   constructor(private _service:StructureService,private _router:Router,private route:ActivatedRoute
    , private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
-  this.structure= new Structure();
-  if(  this.id=this.route.snapshot.params['id']){
-    this._service.getStructureById(this.id).subscribe(
-      data=>{console.log(data)
-      this.structure=data;},
-      error=>console.log(error));
-  }}
-  enregStructure(){
-    
-    this._service.updateStructure(this.data.id,this.data.structure).subscribe(
-      data=>console.log(data),error=>console.error());
-      this.structure= new Structure();
+  
+
+  this.getLieu();
+  this.selectedId1=this.data.structure.lieu_archivage1ereAge.id ;
+  console.log(this.selectedId1);
+ console.log(this.data.structure);
+}
+  enregStructure(){  
+    this._service.updateStructure(this.data.structure.id,this.data.structure).subscribe(
+      data=>{
+          console.log(data)
+        },
+      error=>console.error());
   }
 
- 
+  getLieu(){
+    this._service.getLieu().subscribe(
+    res=>this.lieux=res
+    )
+    }
+
   opensweetalert(){
     Swal.fire({
       title:'Êtes-vous sûre?',
@@ -57,7 +66,7 @@ export class UpdateStructureComponent implements OnInit {
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
-        'Votre fichier imaginaire est en sécurité :)',
+        'Votre fichier imaginaire est en sécurité 🙂',
         'error'
       )
       }
@@ -70,4 +79,3 @@ export class UpdateStructureComponent implements OnInit {
   }
   
 }
-

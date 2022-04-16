@@ -19,7 +19,11 @@ import { UpdateStructureComponent } from './crudStructure/update-structure/updat
 
 import { DestructionDocumentComponent } from './traitement1erAge/destruction-document/destruction-document.component';
 import { AjouteDateDestructionComponent } from './traitement1erAge/ajoute-date-destruction/ajoute-date-destruction.component';
+import { ListeDemandeVersementComponent } from './traitement1erAge/liste-demande-versement/liste-demande-versement.component';
+import { TraiterDemandeComponent } from './traitement1erAge/traiter-demande/traiter-demande.component';
 
+import { TriDocumentComponent } from './traitement1erAge/tri-document/tri-document.component';
+import { CreeDocumentComponent } from './traitement1erAge/cree-document/cree-document.component';
 
 
 const routes: Routes = [
@@ -67,12 +71,25 @@ const routes: Routes = [
     component:UpdateStructureComponent
   },
   {
-   path:'destruction-document',
-   component: DestructionDocumentComponent
+   path:'destruction-document/:id',
+   component:DestructionDocumentComponent
  },{
   path:'ajoute-date-destruction',
-  component: AjouteDateDestructionComponent
-}
+  component:AjouteDateDestructionComponent
+},
+{
+  path:'liste-demande-versement',
+  component: ListeDemandeVersementComponent
+},
+{
+  path:'traiter-demande',
+  component:TraiterDemandeComponent
+},
+{path:'tri-Doc1ereage',component:TriDocumentComponent},
+{path:'cree-Document',component:CreeDocumentComponent}
+
+
+
 ];
 
 @NgModule({

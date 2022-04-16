@@ -19,8 +19,7 @@ export class CreerStructureComponent implements OnInit {
    msg='';
   productForm !: FormGroup;
   lieux!:LieuArchive[];
-  var!:number;
-  var1!:number;
+  
 
   constructor(private location:Location , private _service:StructureService,private _router:Router,private formBuilder : FormBuilder) { }
   ngOnInit(): void {
@@ -30,28 +29,45 @@ export class CreerStructureComponent implements OnInit {
   
  
  public enregStructure(){     
-      let j=new Structure();
-       j=this.structure
+      let variable={
+      code:this.structure.code,
+      libelle:this.structure.libelle,
+      lieu_archivage1ereAge:{id:4,lieu:"Bab El -Oued",code:1},
+      lieu_archivage2emeAge:{id:1,lieu:"Bureau",code:3}
+      }
        
       this._service.getLieuById(this.structure.lieu_archivage1ereAge).subscribe(
-       res=>j.lieu_archivage1ereAge=res
+       res=>{variable.lieu_archivage1ereAge.id=res.id; 
+        variable.lieu_archivage1ereAge.lieu=res.lieu ; 
+        variable.lieu_archivage1ereAge.code=res.code; 
+        console.log("aff1",variable);
+
+        this._service.getLieuById(this.structure.lieu_archivage2emeAge).subscribe(
+          res=>{variable.lieu_archivage2emeAge.id=res.id;
+            variable.lieu_archivage2emeAge.lieu=res.lieu ;
+            variable.lieu_archivage2emeAge.code=res.code; 
+             console.log("aff2",variable);
+             this._service.registrerCompteFromRemoteS(variable).subscribe(     
+      
+              data =>{
+              console.log("reponse received");  
+             },
+             error =>{
+               console.log("exception occured");
+               this.msg=error.error;
+             }
+          )
+
+
+            }
+
+         )
+      }
       
       )  
-      this._service.getLieuById(this.structure.lieu_archivage2emeAge).subscribe(
-        res=>j.lieu_archivage2emeAge=res
-       )
        console.log("hiiii",this.structure);
-       console.log(j);
-       this._service.registrerCompteFromRemoteS(this.structure).subscribe(     
-
-        data =>{
-        console.log("reponse received");  
-       },
-       error =>{
-         console.log("exception occured");
-         this.msg=error.error;
-       }
-    )
+       console.log(variable);
+   
   }
  
 
@@ -72,7 +88,7 @@ export class CreerStructureComponent implements OnInit {
           if(result.isConfirmed ){
             this.structure.code = "";
             this.structure.libelle = "";       
-          /*  this.structure.lieu_archivage1ereAge =""; 
+           /* this.structure.lieu_archivage1ereAge=""; 
             this.structure.lieu_archivage2emeAge=""; */
           }
         })

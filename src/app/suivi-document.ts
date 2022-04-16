@@ -1,11 +1,17 @@
+import { Direction } from "./direction";
+import { Nomenclature } from "./nomenclature";
+
 export class SuiviDocument {
     id!:number;
-    num_doc!:number;
-    chapitre_comptable!:String;
-    nbr_pages!:number;
-    date_creation!:Date;
-    date_entree!:Date;
-    nbr_doc!:number;
-    limite_conservation!:String;
+    numero_document!:number;
+    chapitre_comptable!:string;
+    nombre_De_pages!:number;
+    date_De_creation_Du_Document!:Date;
+    date_d_entree_Du_Document!:Date;
+    nombre_De_documents !:number;
+    limite_de_conservation_1ere_age!:string;
+    designation_Nomenclature!:Nomenclature;
+    libelleDirection!:Direction;
    constructor(){}
+
 }

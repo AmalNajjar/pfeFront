@@ -23,7 +23,8 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  /*background: #fcfcfc;*/
+  background: white;
+  height: 71px;
 }
 .mat-list-item{
   height: 50px;
@@ -31,14 +32,15 @@
   
 }
 .centre{
-margin-left: 600px;
+margin-left: 20px;
 margin-right: 510px;
 font-size: 25px;
-
+color: #082096;
 }
 
 img{
-  margin-right: 5px;
+  margin-left:540px;
+  margin-top:5px
 }
 
 mat-icon{
@@ -50,6 +52,7 @@ mat-icon{
 span{
   margin-top:15px
 }
+
 
 /*
 mat-toolbar {

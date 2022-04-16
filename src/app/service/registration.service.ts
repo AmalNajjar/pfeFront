@@ -34,10 +34,10 @@ export class RegistrationService {
   updateCompte(id:number, compte:Compte):Observable<any>{
     return this._http.put<any>(this.baseUrl + compte.id,compte);
   }
-/*
-public findByEmail(email:string): Observable<Compte>{
-return this._http.get<Compte>(`${this.baseUrl}/findbyEmail/${email}`)
-}*/
+
+  public findByEmail(email:string):Observable<Compte>{
+  return this._http.get<Compte>(`${this.baseUrl}/findbyEmail/${email}`) ;
+  }
 
 
 }

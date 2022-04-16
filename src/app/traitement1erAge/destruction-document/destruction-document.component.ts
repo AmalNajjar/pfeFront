@@ -6,24 +6,29 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { StructureService } from 'src/app/service/structure.service';
 import { AjouteDateDestructionComponent } from '../ajoute-date-destruction/ajoute-date-destruction.component';
+import { SuiviDocument } from 'src/app/suivi-document';
+import { SuiviDocumentService } from 'src/app/service/suivi-document.service';
+
+
 @Component({
   selector: 'app-destruction-document',
   templateUrl: './destruction-document.component.html',
   styleUrls: ['./destruction-document.component.css']
 })
 export class DestructionDocumentComponent implements OnInit {
-
+  doc:SuiviDocument[]=[];
+ suividocument=new SuiviDocument()
   searchValue!:string;
  
-  displayedColumns: string[] = ['chapitre_comptable','code_doc','numero_ordre','date_creation','date_destruction','libelle_direction','action'];
+  displayedColumns: string[] = ['id','chapitre_comptable','code','numero','date_De_creation_Du_Document','dateDestruction','libelle','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
- constructor(private service:StructureService ,private _router:Router,private dialog:MatDialog) { }
+ constructor(private service:SuiviDocumentService,private _router:Router,private dialog:MatDialog) { }
 
  ngOnInit(): void {
-   this.service.getStructures().subscribe(
+   this.service.getDocuments().subscribe(
    data=>{ console.log("response recieved");
             this.dataSource=new MatTableDataSource(data) ;
             this.dataSource.paginator=this.paginator;
@@ -34,21 +39,14 @@ export class DestructionDocumentComponent implements OnInit {
    )
    }
   
-  updateStructure(id:number){
-    this._router.navigate(['update-structure',id]);
-  }
- consulterStructure(id:number){
-   this._router.navigate(['consulter-structure',id]);
-  }
-  deleteStructure(id:number){
-   this._router.navigate(['delete-structure',id]);
-  }
  
  openDialog() {
    this.dialog.open(AjouteDateDestructionComponent, {
     width:'35%'
    });
  }
+
+ 
 /*
  openDialogg(item : any) { 
 

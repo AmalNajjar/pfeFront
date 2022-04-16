@@ -43,7 +43,6 @@ export class DeleteStructureComponent implements OnInit {
      
  } 
 
-
  return(){
  }
 }

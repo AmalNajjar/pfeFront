@@ -86,7 +86,8 @@ const routes: Routes = [
   component:TraiterDemandeComponent
 },
 {path:'tri-Doc1ereage',component:TriDocumentComponent},
-{path:'cree-Document',component:CreeDocumentComponent}
+{path:'cree-Document',component:CreeDocumentComponent},
+{path: '',loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)}
 
 
 

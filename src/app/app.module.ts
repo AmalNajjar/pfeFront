@@ -51,6 +51,9 @@ import { SuiviDocumentComponent } from './traitement1erAge/suivi-document/suivi-
 
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +77,8 @@ import { SuiviDocumentComponent } from './traitement1erAge/suivi-document/suivi-
     CreeDocumentComponent,
     TriDocumentComponent,
     SuiviDocumentComponent,
+   
+    
    
   ],
   imports: [
@@ -99,7 +104,7 @@ import { SuiviDocumentComponent } from './traitement1erAge/suivi-document/suivi-
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

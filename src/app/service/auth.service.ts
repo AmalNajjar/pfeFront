@@ -23,8 +23,8 @@ export class AuthService {
  private currentUserSubject:BehaviorSubject<any>;
  public currentUser:Observable<any>;
 
-  private signupUrl = 'http://localhost:8083/api/auth/';
-  private signinUrl = 'http://localhost:8083/api/auth/';
+  private signupUrl = 'http://localhost:8084/api/auth/';
+  private signinUrl = 'http://localhost:8084/api/auth/';
   constructor(private http:HttpClient,/*private jwtHelper:JwtHelperService,*/
     private tokenstorage:TokenService,private router:Router){
       this.currentUserSubject=new BehaviorSubject<any>(sessionStorage.getItem(TOKEN_KEY));

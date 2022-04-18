@@ -14,12 +14,12 @@ export class SuiviDocumentService {
   isAuth:boolean =false;
  public  getDocuments() 
  {
-   return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments");
+   return this.http.get<any>("http://localhost:8084/api/test/SuiviDocuments");
 }
 getDOcumentById(id:number):Observable<any>{
-  return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments/" + id);
+  return this.http.get<any>("http://localhost:8084/api/test/SuiviDocuments/" + id);
 }
 public createDocument(suividocument:SuiviDocument) :Observable<any>{
-  return this.http.post<any>("http://localhost:8083/api/test/SuiviDocument",suividocument);
+  return this.http.post<any>("http://localhost:8084/api/test/SuiviDocument",suividocument);
 }
 }
